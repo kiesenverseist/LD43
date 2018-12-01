@@ -8,7 +8,10 @@ func _ready():
 	pass
 
 func _process(delta):
-	position.x = int(position.x) % 1024
+	if position.x > 1024 - 32:
+		dir = -1
+	if position.x < 32:
+		dir = 1
 	
 	if randf() < .01:
 		dir = randi()%3 -1

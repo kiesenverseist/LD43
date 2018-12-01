@@ -1,6 +1,6 @@
 extends PanelContainer
 
-var Element = preload("res://balance_bar/element/Element.tscn") 
+var Element = preload("res://GUI/balance_bar/element/Element.tscn") 
 var locked = false setget lock
 
 enum {
@@ -9,7 +9,7 @@ enum {
 }
 
 var data = {
-	value = int(rand_range(16,65)),
+	value = int(rand_range(16,128)),
 	type = GOOD if randf() < .5 else BAD
 } setget update_data
 

@@ -1,6 +1,6 @@
 extends ColorRect
 
-var Element = preload("res://balance_bar/element/Element.tscn")
+var Element = preload("res://GUI/balance_bar/element/Element.tscn")
 
 export var starting_elements = 0
 
