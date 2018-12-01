@@ -54,6 +54,7 @@ tabs_visible = true
 drag_to_rearrange_enabled = true
 
 [node name="None" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -71,7 +72,6 @@ scrolling_enabled = true
 drag_to_rearrange_enabled = true
 
 [node name="Balance" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -89,27 +89,41 @@ tab_close_display_policy = 2
 scrolling_enabled = true
 drag_to_rearrange_enabled = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Balance"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 1
-
-[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/Balance/HBoxContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/Balance"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 124.0
-margin_right = 380.0
-margin_bottom = 547.0
+margin_left = 5.0
+margin_top = 19.0
+margin_right = 261.0
+margin_bottom = 469.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+split_offset = 0
+collapsed = false
+dragger_visibility = 1
+
+[node name="ElementBar" parent="TabContainer/Balance" instance=ExtResource( 3 )]
+margin_left = -128.0
+margin_top = 46.0
+margin_right = 128.0
+margin_bottom = 461.0
+starting_elements = 30
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="TabContainer/Balance"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 769.0
+margin_top = 14.0
+margin_right = 1025.0
+margin_bottom = 468.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -120,13 +134,15 @@ split_offset = 0
 collapsed = false
 dragger_visibility = 0
 
-[node name="Label" type="Label" parent="TabContainer/Balance/HBoxContainer/VSplitContainer"]
+[node name="GoodName" type="Label" parent="TabContainer/Balance"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 256.0
-margin_bottom = 14.0
+margin_left = 5.0
+margin_top = 19.0
+margin_right = 261.0
+margin_bottom = 33.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -138,53 +154,24 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="GoodBar" parent="TabContainer/Balance/HBoxContainer/VSplitContainer" instance=ExtResource( 3 )]
+[node name="GoodBar" parent="TabContainer/Balance" instance=ExtResource( 3 )]
 anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 26.0
-margin_right = 256.0
-margin_bottom = 282.0
+margin_left = 5.0
+margin_top = 43.0
+margin_right = 283.0
+margin_bottom = 468.0
 type = 0
 
-[node name="ElementBar" parent="TabContainer/Balance/HBoxContainer" instance=ExtResource( 3 )]
+[node name="BadName" type="Label" parent="TabContainer/Balance"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 384.0
-margin_top = 0.0
-margin_right = 640.0
-margin_bottom = 256.0
-starting_elements = 10
-
-[node name="VSplitContainer2" type="VSplitContainer" parent="TabContainer/Balance/HBoxContainer"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 644.0
-margin_right = 900.0
-margin_bottom = 547.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-split_offset = 0
-collapsed = false
-dragger_visibility = 0
-
-[node name="Label" type="Label" parent="TabContainer/Balance/HBoxContainer/VSplitContainer2"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 256.0
-margin_bottom = 14.0
+margin_left = 769.0
+margin_top = 14.0
+margin_right = 1025.0
+margin_bottom = 28.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -196,16 +183,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="BadBar" parent="TabContainer/Balance/HBoxContainer/VSplitContainer2" instance=ExtResource( 3 )]
+[node name="BadBar" parent="TabContainer/Balance" instance=ExtResource( 3 )]
 anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 26.0
-margin_right = 256.0
-margin_bottom = 282.0
+margin_left = 751.0
+margin_top = 46.0
+margin_right = 1025.0
+margin_bottom = 468.0
 type = 1
 
-[connection signal="sum_changed" from="TabContainer/Balance/HBoxContainer/VSplitContainer/GoodBar" to="BalanceBar" method="_on_good_changed"]
-[connection signal="sum_changed" from="TabContainer/Balance/HBoxContainer/VSplitContainer2/BadBar" to="BalanceBar" method="_on_bad_changed"]
+[connection signal="sum_changed" from="TabContainer/Balance/GoodBar" to="BalanceBar" method="_on_good_changed"]
+[connection signal="sum_changed" from="TabContainer/Balance/BadBar" to="BalanceBar" method="_on_bad_changed"]
