@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://balance_bar/BalanceBar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://MainTheme.tres" type="Theme" id=2]
-[ext_resource path="res://GUI/BalanceBar.gd" type="Script" id=3]
+[ext_resource path="res://MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://GUI/BalanceBar.gd" type="Script" id=2]
+[ext_resource path="res://balance_bar/BalanceBar.tscn" type="PackedScene" id=3]
 
 [node name="GUI" type="CanvasLayer"]
 layer = 1
@@ -10,54 +10,6 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_left = 0.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -128.0
-margin_bottom = 128.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 1
-
-[node name="GoodBar" parent="HBoxContainer" instance=ExtResource( 1 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 124.0
-margin_top = 0.0
-margin_right = 380.0
-margin_bottom = 256.0
-type = 0
-
-[node name="ElementBar" parent="HBoxContainer" instance=ExtResource( 1 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 384.0
-margin_top = 0.0
-margin_right = 640.0
-margin_bottom = 256.0
-starting_elements = 10
-
-[node name="BadBar" parent="HBoxContainer" instance=ExtResource( 1 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 644.0
-margin_top = 0.0
-margin_right = 900.0
-margin_bottom = 256.0
-type = 1
 
 [node name="BalanceBar" type="ProgressBar" parent="."]
 anchor_left = 0.0
@@ -71,7 +23,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-theme = ExtResource( 2 )
+theme = ExtResource( 1 )
 min_value = 0.0
 max_value = 1.0
 step = 1.0
@@ -82,7 +34,178 @@ rounded = false
 allow_greater = false
 allow_lesser = false
 percent_visible = true
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
-[connection signal="sum_changed" from="HBoxContainer/GoodBar" to="BalanceBar" method="_on_good_changed"]
-[connection signal="sum_changed" from="HBoxContainer/BadBar" to="BalanceBar" method="_on_bad_changed"]
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 35.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+tab_align = 0
+tabs_visible = true
+drag_to_rearrange_enabled = true
+
+[node name="None" type="Tabs" parent="TabContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+tab_align = 0
+tab_close_display_policy = 2
+scrolling_enabled = true
+drag_to_rearrange_enabled = true
+
+[node name="Balance" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+tab_align = 1
+tab_close_display_policy = 2
+scrolling_enabled = true
+drag_to_rearrange_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Balance"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+
+[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/Balance/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 124.0
+margin_right = 380.0
+margin_bottom = 547.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+split_offset = 0
+collapsed = false
+dragger_visibility = 0
+
+[node name="Label" type="Label" parent="TabContainer/Balance/HBoxContainer/VSplitContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 256.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Benifits"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="GoodBar" parent="TabContainer/Balance/HBoxContainer/VSplitContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 26.0
+margin_right = 256.0
+margin_bottom = 282.0
+type = 0
+
+[node name="ElementBar" parent="TabContainer/Balance/HBoxContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 384.0
+margin_top = 0.0
+margin_right = 640.0
+margin_bottom = 256.0
+starting_elements = 10
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="TabContainer/Balance/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 644.0
+margin_right = 900.0
+margin_bottom = 547.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+split_offset = 0
+collapsed = false
+dragger_visibility = 0
+
+[node name="Label" type="Label" parent="TabContainer/Balance/HBoxContainer/VSplitContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 256.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Detriments"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="BadBar" parent="TabContainer/Balance/HBoxContainer/VSplitContainer2" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 26.0
+margin_right = 256.0
+margin_bottom = 282.0
+type = 1
+
+[connection signal="sum_changed" from="TabContainer/Balance/HBoxContainer/VSplitContainer/GoodBar" to="BalanceBar" method="_on_good_changed"]
+[connection signal="sum_changed" from="TabContainer/Balance/HBoxContainer/VSplitContainer2/BadBar" to="BalanceBar" method="_on_bad_changed"]
