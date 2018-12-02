@@ -10,7 +10,8 @@ onready var list = $ScrollContainer/List
 
 enum TYPE {
 	GOOD,
-	BAD
+	BAD,
+	NUETRAL
 }
 
 export(TYPE) var type
@@ -22,15 +23,18 @@ func _ready():
 		var e = Element.instance()
 		list.add_child(e)
 
+#can what is being held be dropped
 func can_drop_data(pos, data):
 	return typeof(data) == TYPE_DICTIONARY \
 			and data.has("ref") \
-			and data.type == type
+			and data.type == NUETRAL
 
+#code to prcoess what happens to what is dropped
 func drop_data(pos, data):
 	var e = Element.instance()
 	list.add_child(e)
 	e.data = data
+	e.data.type = type
 	data.ref.queue_free()
 	e.locked = true
 	
