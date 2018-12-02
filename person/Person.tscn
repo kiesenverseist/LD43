@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 13.8407, 14.3621 )
+extents = Vector2( 2.87917, 3.96467 )
 
 [node name="Person" type="KinematicBody2D"]
 input_pickable = false
@@ -17,7 +17,7 @@ motion/sync_to_physics = false
 script = ExtResource( 1 )
 
 [node name="body" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

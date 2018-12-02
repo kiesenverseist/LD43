@@ -1,7 +1,12 @@
-extends Node2D
+extends Area2D
 
 var level = 1 setget set_level
 
+func _ready():
+	$ConsumptioPopup.popup()
+
 func set_level(val):
 	level = val + 1
-	$Sprite.scale = Vector2(level,level)
+
+func _on_Machine_mouse_entered():
+	$ConsumptioPopup.popup()

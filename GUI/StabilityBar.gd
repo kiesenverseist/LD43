@@ -17,6 +17,7 @@ var half_length = 0
 signal changed
 
 func _process(delta):
+	#tween position
 	pos += (extent - pos)/10
 	half_length = get_viewport_rect().size.x/2
 	
@@ -27,6 +28,7 @@ func _process(delta):
 		$Bar.margin_right = 0
 		$Bar.margin_left = pos * half_length
 	
+	#tween colour
 	var c = Color(0,1,0).linear_interpolate(Color(1,0,0), abs(pos*3))
 	$Bar.color = c
 

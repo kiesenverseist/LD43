@@ -8,15 +8,27 @@ func _process(d):
 	
 	var res = $"/root/Main".resources
 	var rec = $"/root/Main".record
+	var col = $"/root/Main".colors
+	var lim = $"/root/Main".limits
 	
 	for type in res:
-		add_text(str(type) + " " + str(res[type]))
+		
+		push_color(col[type])
+		add_text(str(type) + " :")
+		pop()
+		
+		add_text(str(round(res[type])) + "/" + str(round(lim[type])))
+		
 		if rec[type].size() > 2:
-			var diff = rec[type][rec[type].size()-1] - rec[type][rec[type].size()-2]
+			var diff = -rec[type][rec[type].size()-1] + rec[type][rec[type].size()-2]
+			
 			if diff > 0:
 				push_color(Color(0,1,0))
-			else:
+			elif diff < 0:
 				push_color(Color(1,0,0))
-			add_text("(%s)" % str(diff))
-			pop()
+			
+			add_text(" (%s)" % str(round(diff)))
+			
+			if diff != 0: pop()
+		
 		newline()

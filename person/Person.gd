@@ -1,26 +1,32 @@
 extends KinematicBody2D
 
-var speed = 30
+var speed = 10
 var dir = 1
 var vel = Vector2()
+var alive = true
+var grav = 10
+var extents = 20
 
 func _ready():
 	pass
 
 func _process(delta):
-	if position.x > 1024 - 32:
-		dir = -1
-	if position.x < 32:
-		dir = 1
-	
 	if randf() < .01:
 		dir = randi()%3 -1
 	
+	if position.x > extents:
+		dir = -1
+	if position.x < -extents:
+		dir = 1
 
 func _physics_process(delta):	
+	vel.x = speed * dir
 	if is_on_floor():
-		vel.x = speed * dir
 		vel.y = 0
 	else:
-		vel.y += 10
+		vel.y += grav
 	move_and_slide(vel, Vector2(0, -1))
+
+func kill():
+	alive = false
+	queue_free()

@@ -8,16 +8,17 @@ func _draw():
 	#have no idea how it works
 	#so dont touch it
 	var rec = $"/root/Main".record
+	var lim = $"/root/Main".limits
+	var col = $"/root/Main".colors
 	
 	for type in rec:
-		var m = rec[type].max()
 		var line = []
 		
 		for i in range(rec[type].size()):
 			var vec = Vector2()
-			vec.x = rect_size.x / 100 * i
-			vec.y = rect_size.y * (1-rec[type][i] / max(m,1))
+			vec.x = rect_size.x / 101 *(100- i)
+			vec.y = rect_size.y * (1-rec[type][i] / lim[type])
 			line.append(vec)
 		
 		for i in range(1, line.size()):
-			draw_line(line[i-1], line[i], Color(1,0,0),2)
+			draw_line(line[i-1], line[i], col[type],2)
