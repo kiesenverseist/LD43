@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Machine/Machine.gd" type="Script" id=1]
 [ext_resource path="res://GUI/ConsumptioPopup.tscn" type="PackedScene" id=2]
@@ -6,6 +6,32 @@
 [ext_resource path="res://Machine/idle_anim/bm1 2.png" type="Texture" id=4]
 [ext_resource path="res://Machine/idle_anim/bm1 3.png" type="Texture" id=5]
 [ext_resource path="res://Machine/idle_anim/bm1 4.png" type="Texture" id=6]
+[ext_resource path="res://Machine/base machine 1/bm unstable/bm1 1.png" type="Texture" id=7]
+[ext_resource path="res://Machine/base machine 1/bm unstable/bm1 2.png" type="Texture" id=8]
+[ext_resource path="res://Machine/base machine 1/bm unstable/bm1 3.png" type="Texture" id=9]
+[ext_resource path="res://Machine/base machine 1/bm unstable/bm1 4.png" type="Texture" id=10]
+[ext_resource path="res://Machine/machine 2/m2 idle/m2 1.png" type="Texture" id=11]
+[ext_resource path="res://Machine/machine 2/m2 idle/m2 2.png" type="Texture" id=12]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 1.png" type="Texture" id=13]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 2.png" type="Texture" id=14]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 3.png" type="Texture" id=15]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 4.png" type="Texture" id=16]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 5.png" type="Texture" id=17]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 6.png" type="Texture" id=18]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 7.png" type="Texture" id=19]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 8.png" type="Texture" id=20]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 9.png" type="Texture" id=21]
+[ext_resource path="res://Machine/machine 2/m2 unstable/m2 10.png" type="Texture" id=22]
+[ext_resource path="res://Machine/machine 3/m3 idle/m3 1.png" type="Texture" id=23]
+[ext_resource path="res://Machine/machine 3/m3 idle/m3 2.png" type="Texture" id=24]
+[ext_resource path="res://Machine/machine 3/m3 unstable/m3 1.png" type="Texture" id=25]
+[ext_resource path="res://Machine/machine 3/m3 unstable/m3 2.png" type="Texture" id=26]
+[ext_resource path="res://Machine/machine 3/m3 unstable/m3 3.png" type="Texture" id=27]
+[ext_resource path="res://Machine/machine 3/m3 unstable/m3 4.png" type="Texture" id=28]
+[ext_resource path="res://Machine/machine 3/m3 unstable/m3 5.png" type="Texture" id=29]
+[ext_resource path="res://Machine/machine 3/m3 unstable/m3 6.png" type="Texture" id=30]
+[ext_resource path="res://Machine/machine 3/m3 unstable/m3 7.png" type="Texture" id=31]
+[ext_resource path="res://Machine/machine 3/m3 unstable/m3 8.png" type="Texture" id=32]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -16,6 +42,51 @@ extents = Vector2( 14.7363, 16.9644 )
 
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+
+animations = [ {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -41,10 +112,49 @@ margin_top = -309.0
 margin_right = 260.0
 margin_bottom = -45.0
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="level1" type="Node2D" parent="."]
+
+[node name="stable" type="AnimatedSprite" parent="level1"]
 frames = SubResource( 2 )
 animation = "default"
-frame = 2
+playing = true
+
+[node name="unstable" type="AnimatedSprite" parent="level1"]
+visible = false
+frames = SubResource( 3 )
+animation = "default"
+playing = true
+
+[node name="level2" type="Node2D" parent="."]
+position = Vector2( 40, 0 )
+
+[node name="stable" type="AnimatedSprite" parent="level2"]
+frames = SubResource( 4 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="unstable" type="AnimatedSprite" parent="level2"]
+visible = false
+frames = SubResource( 5 )
+animation = "default"
+frame = 5
+playing = true
+
+[node name="level3" type="Node2D" parent="."]
+position = Vector2( -45, -16 )
+
+[node name="stable" type="AnimatedSprite" parent="level3"]
+frames = SubResource( 6 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="unstable" type="AnimatedSprite" parent="level3"]
+visible = false
+frames = SubResource( 7 )
+animation = "default"
+frame = 1
 playing = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_Machine_mouse_entered"]

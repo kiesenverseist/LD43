@@ -5,8 +5,8 @@ onready var machine = $Machine
 
 onready var person = preload("res://person/Person.tscn")
 
-var level = 1 setget levelup
-var extents = 400
+var level = 0 setget levelup
+var stable = true
 
 var record = {
 	humans = [],
@@ -17,7 +17,7 @@ var record = {
 }
 
 var resources = {
-	humans = 3,
+	humans = 10,
 	money = 100,
 	research = 0,
 	materials = 100,
@@ -41,37 +41,60 @@ var limits = {
 }
 
 var level_config = {
+	0 : {
+		zoom = Vector2(0.16,0.16),
+		camera_pos = Vector2(0, 0),
+		extents = 70
+	},
 	1 : {
-		zoom = Vector2(0.15,0.15),
+		zoom = Vector2(0.16,0.16),
 		camera_pos = Vector2(0, 0),
 		extents = 70
 	},
 	2 : {
-		zoom = Vector2(.3,.3),
-		camera_pos = Vector2(0, -100),
-		extents = 140
+		zoom = Vector2(.32,.32),
+		camera_pos = Vector2(0, -48),
+		extents = 160
+	},
+	3 : {
+		zoom = Vector2(.32,.32),
+		camera_pos = Vector2(0, -48),
+		extents = 160
 	}
 }
 
 func _ready():
-	pass
+	self.level = 1
 
-func _on_StabilityBar_changed():
-	var new = int((bar.good_val + bar.bad_val) / 500)
+func _on_StabilityBar_changed():	
+	stable = abs(bar.extent) < .5
+	machine.stable = stable
+	
+	printt(bar.pos, stable)
+	
+	var new = int((bar.good_val + bar.bad_val) / 200)
 	if new > level:
 		self.level += 1
 
 func levelup(val):	
 	machine.level = val
 	level = val
-	var config = level_config[val]
+	var config = level_config[min(val,3)]
 	
 	$Camera2D.zoom = config.zoom
 	$Camera2D.position = config.camera_pos
 	
+	$people.extents = config.extents
+	
+	for c in $room.get_children():
+		c.visible = false
+	
+	resources.humans += 2
+	
 	match level:
-		2:
-			$room/level1.visible = false
+		1:
+			$room/level1.visible = true
+		2,3:
 			$room/level2.visible = true
 			
 
@@ -93,7 +116,7 @@ func _on_ResourceTrackerCountdown_timeout():
 func resource_effects():
 	while $people.get_people() < resources.humans:
 		var p = person.instance()
-		p.position = Vector2(randi()%1024,randi()%400 + 50)
+		p.position = Vector2(randi()%($people.extents*2)-$people.extents,-randi()%100-200)
 		$people.add_child(p)
 		yield(get_tree(), "idle_frame")
 	

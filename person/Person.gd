@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
-var speed = 10
+var speed = 40
 var dir = 1
 var vel = Vector2()
 var alive = true
-var grav = 10
+var grav = 2.5
 var extents = 20
 
 func _ready():
@@ -21,7 +21,7 @@ func _process(delta):
 
 func _physics_process(delta):	
 	vel.x = speed * dir
-	if is_on_floor():
+	if is_on_floor() or is_on_ceiling():
 		vel.y = 0
 	else:
 		vel.y += grav

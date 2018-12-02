@@ -1,30 +1,40 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://resource_manager.gd" type="Script" id=2]
-[ext_resource path="res://environment/background.png" type="Texture" id=3]
-[ext_resource path="res://environment/uplift.tscn" type="PackedScene" id=4]
-[ext_resource path="res://environment/backgrounds/temp_back_1.png" type="Texture" id=5]
-[ext_resource path="res://environment/backgrounds/temp_back_2.png" type="Texture" id=6]
-[ext_resource path="res://Machine/Machine.tscn" type="PackedScene" id=7]
-[ext_resource path="res://environment/people_manager.gd" type="Script" id=8]
-[ext_resource path="res://person/Person.tscn" type="PackedScene" id=9]
-[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=10]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 512, 11.7225 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 355.122, 14.4899 )
+[ext_resource path="res://environment/backgrounds/back 1.png" type="Texture" id=3]
+[ext_resource path="res://environment/backgrounds/backround 2.png" type="Texture" id=4]
+[ext_resource path="res://environment/uplift.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Machine/Machine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://environment/people_manager.gd" type="Script" id=7]
+[ext_resource path="res://person/Person.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
+extents = Vector2( 82.9558, 3.12823 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
 extents = Vector2( 164.209, 6.87491 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 152.171, 3.81523 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2.07751, 32.7206 )
+
+[sub_resource type="SegmentShape2D" id=7]
+
+custom_solver_bias = 0.0
+a = Vector2( -85.3183, -32.2703 )
+b = Vector2( -121.934, -12.5757 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -40,35 +50,10 @@ script = ExtResource( 2 )
 
 [node name="room" type="Node" parent="."]
 
-[node name="background_test" type="Sprite" parent="room"]
-visible = false
-texture = ExtResource( 3 )
-centered = false
-
-[node name="uplift" parent="room/background_test" instance=ExtResource( 4 )]
-
-[node name="floor" type="StaticBody2D" parent="room/background_test"]
-position = Vector2( -0.773804, 0.773773 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="room/background_test/floor"]
-position = Vector2( 512, 547 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="room/background_test/floor"]
-position = Vector2( 476, 305 )
-shape = SubResource( 2 )
-
 [node name="level1" type="Sprite" parent="room"]
+visible = false
 z_index = -3
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="room/level1"]
 input_pickable = false
@@ -78,14 +63,13 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room/level1/StaticBody2D"]
-position = Vector2( 0, 40 )
+position = Vector2( 0, 46.1301 )
 shape = SubResource( 3 )
 
 [node name="level2" type="Sprite" parent="room"]
-visible = false
-position = Vector2( 0, -50 )
+position = Vector2( 0, -48 )
 z_index = -3
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="room/level2"]
 input_pickable = false
@@ -95,21 +79,39 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room/level2/StaticBody2D"]
-position = Vector2( 0, 90 )
-shape = SubResource( 3 )
+position = Vector2( -0.277386, 97.7669 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="room/level2/StaticBody2D"]
+position = Vector2( 12.9659, 4.54568 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="room/level2/StaticBody2D"]
+position = Vector2( -138.418, 34.0668 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="room/level2/StaticBody2D"]
+position = Vector2( -39.0869, -15.3636 )
+shape = SubResource( 7 )
+
+[node name="uplift" parent="room/level2" instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" parent="room/level2/uplift" index="0"]
+position = Vector2( -151.088, 43.785 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -48 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.15, 0.15 )
+zoom = Vector2( 0.32, 0.32 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
 limit_bottom = 10000000
 limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
 smoothing_enabled = true
 smoothing_speed = 5.0
 offset_v = 0.0
@@ -122,25 +124,64 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="Machine" parent="." instance=ExtResource( 7 )]
+[node name="Machine" parent="." instance=ExtResource( 6 )]
 position = Vector2( -0.192871, 16.6294 )
 
-[node name="people" type="Node" parent="."]
-script = ExtResource( 8 )
+[node name="level1" parent="Machine" index="2"]
+position = Vector2( -26.345, 10.1525 )
 
-[node name="Person" parent="people" instance=ExtResource( 9 )]
+[node name="stable" parent="Machine/level1" index="0"]
+frame = 1
+
+[node name="unstable" parent="Machine/level1" index="1"]
+frame = 1
+
+[node name="level2" parent="Machine" index="3"]
+position = Vector2( 23.2934, 10.6665 )
+
+[node name="stable" parent="Machine/level2" index="0"]
+frame = 0
+
+[node name="unstable" parent="Machine/level2" index="1"]
+frame = 8
+
+[node name="level3" parent="Machine" index="4"]
+position = Vector2( 112.846, -96.1734 )
+
+[node name="stable" parent="Machine/level3" index="0"]
+frame = 0
+
+[node name="unstable" parent="Machine/level3" index="1"]
+frame = 2
+
+[node name="people" type="Node" parent="."]
+editor/display_folded = true
+script = ExtResource( 7 )
+
+[node name="Person" parent="people" instance=ExtResource( 8 )]
 position = Vector2( 17.8944, -22.0531 )
 
-[node name="Person2" parent="people" instance=ExtResource( 9 )]
+[node name="Person2" parent="people" instance=ExtResource( 8 )]
 position = Vector2( -29.8051, -2.75958 )
 
-[node name="Person3" parent="people" instance=ExtResource( 9 )]
+[node name="Person3" parent="people" instance=ExtResource( 8 )]
 position = Vector2( -38.5726, 16.5455 )
 
-[node name="GUI" parent="." instance=ExtResource( 10 )]
+[node name="GUI" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
+
+[node name="Resources" parent="GUI/TabContainer" index="2"]
+visible = false
+
+[node name="OptionButton" parent="GUI/TabContainer/Resources" index="2"]
+text = "Tier 1"
 
 [connection signal="timeout" from="ResourceTrackerCountdown" to="resource_manager" method="_on_ResourceTrackerCountdown_timeout"]
 [connection signal="timeout" from="ResourceTrackerCountdown" to="." method="_on_ResourceTrackerCountdown_timeout"]
 [connection signal="changed" from="GUI/StabilityBar" to="." method="_on_StabilityBar_changed"]
+
+[editable path="room/level2/uplift"]
+
+[editable path="Machine"]
 
 [editable path="GUI"]
