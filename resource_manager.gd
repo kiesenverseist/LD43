@@ -51,6 +51,10 @@ func _on_ResourceTrackerCountdown_timeout():
 	
 	for type in passive_creation:
 		m.resources[type] += total_benifit[type] + total_detriment[type]
+		
+	if m.resources.money > 100 * m.level:
+		m.uplevel()
+		m.resources.money -= 100 * m.level
 
 	
 #for type in requirements:

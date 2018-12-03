@@ -59,7 +59,7 @@ func drop_data(pos, data):
 		NUETRAL:
 			e.data.type = GOOD
 	
-	if type == BAD:
+	if type == BAD or type == SPECIAL:
 		e.locked = true
 	
 	var c = []

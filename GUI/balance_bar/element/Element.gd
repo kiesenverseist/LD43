@@ -14,7 +14,7 @@ enum {
 
 var card = null
 
-var panel_offset = Vector2(134, -60)
+var panel_offset = Vector2(50, -100)
 
 var data = {
 	card = null,
@@ -24,7 +24,7 @@ var data = {
 func _ready():
 	if card == null:
 		card = $"/root/Main/CardManager".get_card()
-		data.card = card
+		self.data.card = card
 	if !is_preview:
 		remove_child(panel)
 		$"../../../../".add_child(panel)
@@ -32,8 +32,8 @@ func _ready():
 
 func _process(delta):
 	panel.visible = !is_preview and Rect2(Vector2(), rect_size).has_point(get_local_mouse_position())
-	panel.rect_global_position = rect_global_position + panel_offset
-
+	panel.rect_global_position = get_viewport().get_mouse_position() + panel_offset
+	get_viewport()
 # to pick up
 func get_drag_data(pos):
 	if locked:
@@ -51,7 +51,9 @@ func get_drag_data(pos):
 
 func update_data(new = data):
 	data = new
-		
+	
+	
+	
 	$TextureRect.visible = false
 	$TextureRect2.visible = false
 	$TextureRect3.visible = false
@@ -94,7 +96,7 @@ func update_data(new = data):
 				panel.get_node("benifits_d").visible = false
 				panel.get_node("detriments_c").visible = true
 				panel.get_node("detriments_d").visible = true
-				panel_offset = Vector2(-280, -60)
+				panel_offset = Vector2(-340, -100)
 		
 		
 		panel.get_node("benifits_c").text = "Passive generation: \n Humans: %s \n Money: %s \n Research: %s" % \

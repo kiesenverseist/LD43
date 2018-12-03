@@ -14,13 +14,13 @@ func set_level(val : int):
 	$level3.visible = false
 	
 	match level:
-		3:
+		4:
 			$level3.visible = true
 			continue
-		3,2:
+		4,3,2:
 			$level2.visible = true
 			continue
-		3,2,1:
+		4,3,2,1:
 			$level1.visible = true
 	
 

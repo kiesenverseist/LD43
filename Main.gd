@@ -1,13 +1,13 @@
 extends Node2D
 
-onready var bar = $GUI/StabilityBar
 onready var machine = $Machine
 
 onready var person = preload("res://person/Person.tscn")
+onready var elm = preload("res://GUI/balance_bar/element/Element.tscn")
 
 var level = 0 setget levelup
 var stable = true
-
+var level_given = false
 var research_goal = 20
 
 var record = {
@@ -48,12 +48,18 @@ var level_config = {
 		limits = 0
 	},
 	2 : {
+		zoom = Vector2(0.16,0.16),
+		camera_pos = Vector2(0, 0),
+		extents = 70,
+		limits = 0
+	},
+	3 : {
 		zoom = Vector2(.32,.32),
 		camera_pos = Vector2(0, -48),
 		extents = 160,
-		limits = 1000
+		limits = 3000
 	},
-	3 : {
+	4 : {
 		zoom = Vector2(.32,.32),
 		camera_pos = Vector2(0, -48),
 		extents = 160,
@@ -62,7 +68,20 @@ var level_config = {
 }
 
 func _ready():
-	self.level = 3
+	self.level = 0
+	uplevel()
+#	for i in range(1,5):
+#		print(-i)
+#		var c = $CardManager.get_card(-i)
+#		var e = elm.instance()
+#
+#		$GUI/TabContainer/Balance/ElementBar.list.add_child(e)
+#
+#		yield(get_tree(), "idle_frame")
+#
+#		e.card = c
+#		e.data.card = c
+		
 
 func _process(delta):
 	if resources.research > research_goal:
@@ -74,18 +93,11 @@ func research_complete():
 	$GUI/TabContainer/Balance/ElementBar.generate_card()
 	$resource_manager.research_completed()
 
-func _on_StabilityBar_changed():	
-	stable = abs(bar.extent) < .5
-	machine.stable = stable
-	
-	var new = int((bar.good_val + bar.bad_val) / 200)
-	if new > level:
-		self.level += 1
-
 func levelup(val):	
+	level_given = false
 	machine.level = val
 	level = val
-	var config = level_config[min(val,3)]
+	var config = level_config[min(val,4)]
 	
 	$Camera2D.zoom = config.zoom
 	$Camera2D.position = config.camera_pos
@@ -100,10 +112,10 @@ func levelup(val):
 		c.get_node("StaticBody2D").set_collision_layer_bit(0,false)
 	
 	match level:
-		1:
+		0,1,2:
 			$room/level1.visible = true
 			$room/level1/StaticBody2D.set_collision_layer_bit(0, true)
-		2,3:
+		3,4:
 			$room/level2.visible = true
 			$room/level1/StaticBody2D.set_collision_layer_bit(0, true)
 			
@@ -141,3 +153,23 @@ func resource_effects():
 		$people.get_child(0).kill()
 		yield(get_tree(), "idle_frame")
 		
+
+func _on_SpecialBar_card_changed(list):
+	self.level = list.size()
+
+func uplevel():
+	
+	if level_given:
+		return
+	
+	level_given = true
+	
+	var c = $CardManager.get_card(-(level + 1))
+	var e = elm.instance()
+	
+	$GUI/TabContainer/Balance/ElementBar.list.add_child(e)
+	
+	yield(get_tree(), "idle_frame")
+	
+	e.card = c
+	e.data.card = c

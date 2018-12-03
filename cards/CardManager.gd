@@ -16,9 +16,14 @@ func _ready():
 		
 		fn = d.get_next()
 
-func get_card(id = -1):
-	if id == -1:
-		return cards[randi()%cards.size()]
+func get_card(id = null):
+	if id == null:
+		var c = null
+		while c == null:
+			c = cards[randi()%cards.size()]
+			if c.id < 0:
+				c = null
+		return c
 	
 	for card in cards:
 		if card.id == id:
