@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "card",
+"language": "GDScript",
+"path": "res://cards/base_card.gd"
+} ]
 _global_script_class_icons={
-
+"card": ""
 }
 
 [application]
@@ -23,6 +28,7 @@ config/icon="res://icon.png"
 
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+window/stretch/shrink=1.0
 
 [image]
 

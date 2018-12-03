@@ -25,6 +25,14 @@ var passive_creation = {
 	research = 0
 }
 
+var research_reward = {
+	money = 50,
+	materials = 50,
+	energy = 50,
+	humans = 0,
+	research = 0
+}
+
 #chnage this in a few
 var requirements = {
 	humans = {
@@ -64,12 +72,22 @@ var requirements = {
 	}
 }
 
+func research_completed():
+	pass
+#	for type in research_reward:
+#		m.resources[type] += research_reward[type]
+
 func _on_ResourceTrackerCountdown_timeout():
 	for type in human_consumption:
+		if m.resources[type] < -human_consumption[type] * m.resources.humans:
+			m.resources.humans -= 1
+			m.resources.money += 100
+			continue
 		m.resources[type] += human_consumption[type] * m.resources.humans
 	
 	for type in machine_consumption:
 		m.resources[type] += machine_consumption[type]
+
 #for type in requirements:
 #		for req in requirements[type]:
 #			m.resources[req] += requirements[type][req] * m.resources[req]

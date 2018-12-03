@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 40
+var speed = randi()%10 + 5
 var dir = 1
 var vel = Vector2()
 var alive = true
@@ -11,13 +11,31 @@ func _ready():
 	pass
 
 func _process(delta):
-	if randf() < .01:
-		dir = randi()%3 -1
-	
-	if position.x > extents:
-		dir = -1
-	if position.x < -extents:
+	if !alive:
 		dir = 1
+		speed = 15
+		
+		if position.x > extents:
+			queue_free()
+	else:	
+		if randf() < .01:
+			dir = randi()%3 -1
+		
+		if position.x > extents:
+			dir = -1
+		if position.x < -extents:
+			dir = 1
+	
+	match dir:
+		-1:
+			$body.animation = "walking"
+			$body.flip_h = false
+		0:
+			$body.animation = "idle"
+		1:
+			$body.animation = "walking"
+			$body.flip_h = true
+	
 
 func _physics_process(delta):	
 	vel.x = speed * dir
@@ -29,4 +47,3 @@ func _physics_process(delta):
 
 func kill():
 	alive = false
-	queue_free()

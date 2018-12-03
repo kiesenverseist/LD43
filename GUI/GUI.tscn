@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GUI/StabilityBar.gd" type="Script" id=1]
 [ext_resource path="res://MainTheme.tres" type="Theme" id=2]
 [ext_resource path="res://GUI/balance_bar/ElementBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GUI/ResourceText.gd" type="Script" id=4]
 [ext_resource path="res://GUI/Graph.gd" type="Script" id=5]
+[ext_resource path="res://GUI/ProgressBar.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -42,6 +43,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="StabilityBar" type="Container" parent="."]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -86,7 +88,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 35.0
+margin_top = 10.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -132,110 +134,37 @@ tab_align = 1
 scrolling_enabled = true
 drag_to_rearrange_enabled = true
 
-[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/Balance"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 5.0
-margin_top = 19.0
-margin_right = 261.0
-margin_bottom = 469.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-split_offset = 0
-collapsed = false
-dragger_visibility = 1
-
 [node name="ElementBar" parent="TabContainer/Balance" instance=ExtResource( 3 )]
-margin_left = -128.0
-margin_top = 46.0
-margin_right = 128.0
-margin_bottom = 461.0
-starting_elements = 30
-
-[node name="VSplitContainer2" type="VSplitContainer" parent="TabContainer/Balance"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 769.0
-margin_top = 14.0
-margin_right = 1025.0
-margin_bottom = 468.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-split_offset = 0
-collapsed = false
-dragger_visibility = 0
-
-[node name="GoodName" type="Label" parent="TabContainer/Balance"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 5.0
-margin_top = 19.0
-margin_right = 261.0
-margin_bottom = 33.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "Benifits"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+anchor_left = 0.2
+anchor_right = 0.2
+margin_left = -50.0
+margin_top = 40.0
+margin_right = 50.0
+margin_bottom = 460.0
+starting_elements = 2
 
 [node name="GoodBar" parent="TabContainer/Balance" instance=ExtResource( 3 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 5.0
-margin_top = 43.0
-margin_right = 283.0
-margin_bottom = 468.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -50.0
+margin_top = 40.0
+margin_right = 50.0
+margin_bottom = 460.0
+color = Color( 0.501961, 0.8, 0.501961, 0.501961 )
 type = 0
 
-[node name="BadName" type="Label" parent="TabContainer/Balance"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 769.0
-margin_top = 14.0
-margin_right = 1025.0
-margin_bottom = 28.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "Detriments"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
 [node name="BadBar" parent="TabContainer/Balance" instance=ExtResource( 3 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 751.0
-margin_top = 46.0
-margin_right = 1025.0
-margin_bottom = 468.0
+anchor_left = 0.8
+anchor_right = 0.8
+margin_left = -50.0
+margin_top = 40.0
+margin_right = 50.0
+margin_bottom = 460.0
+color = Color( 1, 0.501961, 0.501961, 0.501961 )
 type = 1
 
 [node name="Resources" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -299,32 +228,52 @@ size_flags_vertical = 1
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 5 )
 
-[node name="OptionButton" type="OptionButton" parent="TabContainer/Resources"]
+[node name="ProgressBar" type="ProgressBar" parent="TabContainer/Resources"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 110.0
-margin_top = 237.0
-margin_right = 194.0
-margin_bottom = 257.0
+margin_left = 66.0
+margin_top = 306.0
+margin_right = 262.0
+margin_bottom = 320.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-action_mode = 0
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Item 0"
-flat = false
-align = 0
-items = [ "Tier 1", null, false, -1, null, "Tier 2", null, false, -1, null, "Tier 3", null, false, -1, null ]
-selected = 0
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+allow_greater = false
+allow_lesser = false
+percent_visible = true
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="TabContainer/Resources"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 106.0
+margin_top = 286.0
+margin_right = 223.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Research Progress"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="Components" type="Tabs" parent="TabContainer"]
 visible = false

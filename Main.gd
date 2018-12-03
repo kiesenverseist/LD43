@@ -8,6 +8,8 @@ onready var person = preload("res://person/Person.tscn")
 var level = 0 setget levelup
 var stable = true
 
+var research_goal = 20
+
 var record = {
 	humans = [],
 	money = [],
@@ -17,11 +19,11 @@ var record = {
 }
 
 var resources = {
-	humans = 10,
-	money = 100,
+	humans = 3,
+	money = 500,
 	research = 0,
-	materials = 100,
-	energy = 100
+	materials = 500,
+	energy = 500
 }
 
 var colors = {
@@ -35,7 +37,7 @@ var colors = {
 var limits = {
 	humans = 10.0,
 	money = 1000.0,
-	research = 100.0,
+	research = 500.0,
 	materials = 1000.0,
 	energy = 1000.0
 }
@@ -44,33 +46,45 @@ var level_config = {
 	0 : {
 		zoom = Vector2(0.16,0.16),
 		camera_pos = Vector2(0, 0),
-		extents = 70
+		extents = 70,
+		limits = 0
 	},
 	1 : {
 		zoom = Vector2(0.16,0.16),
 		camera_pos = Vector2(0, 0),
-		extents = 70
+		extents = 70,
+		limits = 0
 	},
 	2 : {
 		zoom = Vector2(.32,.32),
 		camera_pos = Vector2(0, -48),
-		extents = 160
+		extents = 160,
+		limits = 1000
 	},
 	3 : {
 		zoom = Vector2(.32,.32),
 		camera_pos = Vector2(0, -48),
-		extents = 160
+		extents = 160,
+		limits = 3000
 	}
 }
 
 func _ready():
 	self.level = 1
 
+func _process(delta):
+	if resources.research > research_goal:
+		research_complete()
+
+func research_complete():
+	resources.research = 0
+	research_goal = randi()%(50*level^2) + 20 * level
+	$GUI/TabContainer/Balance/ElementBar.generate_card()
+	$resource_manager.research_completed()
+
 func _on_StabilityBar_changed():	
 	stable = abs(bar.extent) < .5
 	machine.stable = stable
-	
-	printt(bar.pos, stable)
 	
 	var new = int((bar.good_val + bar.bad_val) / 200)
 	if new > level:
@@ -86,16 +100,22 @@ func levelup(val):
 	
 	$people.extents = config.extents
 	
+	resources.humans += 2
+	limits.money += config.limits
+	limits.materials += config.limits
+	limits.energy += config.limits
+	
 	for c in $room.get_children():
 		c.visible = false
-	
-	resources.humans += 2
+		c.get_node("StaticBody2D").set_collision_layer_bit(0,false)
 	
 	match level:
 		1:
 			$room/level1.visible = true
+			$room/level1/StaticBody2D.set_collision_layer_bit(0, true)
 		2,3:
 			$room/level2.visible = true
+			$room/level1/StaticBody2D.set_collision_layer_bit(0, true)
 			
 
 func _on_ResourceTrackerCountdown_timeout():
@@ -116,8 +136,15 @@ func _on_ResourceTrackerCountdown_timeout():
 func resource_effects():
 	while $people.get_people() < resources.humans:
 		var p = person.instance()
-		p.position = Vector2(randi()%($people.extents*2)-$people.extents,-randi()%100-200)
+		
+		match level:
+			0,1 :
+				p.position = Vector2(-100,0)
+			2,3:
+				p.position = Vector2(randi()%($people.extents*2)-$people.extents,-randi()%100-200)
+		
 		$people.add_child(p)
+		
 		yield(get_tree(), "idle_frame")
 	
 	while $people.get_people() > resources.humans:
