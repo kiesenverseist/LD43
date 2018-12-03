@@ -9,9 +9,9 @@ export(int, 1, 3) var tier
 export var benifits = {
 	description = "",
 	instant = {
-		human = 0,
-		research = 0,
-		money = 0
+		human = 0.0,
+		research = 0.0,
+		money = 0.0
 	},
 	generation = {
 		human = 0,
