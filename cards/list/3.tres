@@ -5,34 +5,34 @@
 [resource]
 
 script = ExtResource( 1 )
-name = "the first card :D"
-description = "cool card"
-id = null
+name = "Casual Work"
+description = "Scientits can now work flexible 50 hour weeks "
+id = 2
 tier = null
 benifits = {
-"description": "",
+"description": "some scientits are attracted to this offer and seem to work harder than the others with 15 year contracts",
 "generation": {
-"human": 1,
-"money": 1,
-"research": 1
+"human": 0,
+"money": 0,
+"research": 5
 },
 "instant": {
-"human": 1,
-"money": 1,
-"research": 1
+"human": 2,
+"money": -25,
+"research": 0
 }
 }
 detriments = {
-"description": "",
+"description": "casual scientits cannot work casually without casual work",
 "generation": {
-"human": -1,
-"money": -1,
-"research": -1
+"human": 0,
+"money": 0,
+"research": 0
 },
 "instant": {
-"human": -1,
-"money": -1,
-"research": -1
+"human": -2,
+"money": 5,
+"research": 0
 }
 }
 

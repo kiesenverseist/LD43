@@ -115,7 +115,7 @@ position = Vector2( -151.088, 43.3669 )
 [node name="AnimatedSprite" parent="room/level2/uplift" index="1"]
 modulate = Color( 1, 1, 1, 0.505882 )
 position = Vector2( -150.523, 31.7772 )
-frame = 21
+frame = 20
 
 [node name="Timer" type="Timer" parent="room/level2/uplift"]
 process_mode = 1
