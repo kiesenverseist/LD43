@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Casual Work"
+description = "Scientits can now work flexible 50 hour weeks "
+id = 2
+tier = null
+benifits = {
+"description": "some scientits are attracted to this offer and seem to work harder than the others with 15 year contracts",
+"generation": {
+"human": 0,
+"money": 0,
+"research": 5
+},
+"instant": {
+"human": 2,
+"money": -25,
+"research": 0
+}
+}
+detriments = {
+"description": "casual scientits cannot work casually without casual work",
+"generation": {
+"human": 0,
+"money": 0,
+"research": 0
+},
+"instant": {
+"human": -2,
+"money": 5,
+"research": 0
+}
+}
+

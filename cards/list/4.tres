@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Quality Control"
+description = "All recurited scientits are interviewed to ensure only \"suitable\" candidates are working, the rest are \"displaced\""
+id = 3
+tier = null
+benifits = {
+"description": "remaning scientits seem to now be incredibly viglient with thier work",
+"generation": {
+"human": 0,
+"money": 0,
+"research": 10
+},
+"instant": {
+"human": -3,
+"money": 0,
+"research": 0
+}
+}
+detriments = {
+"description": "lazy scientits return ",
+"generation": {
+"human": 0,
+"money": -1,
+"research": -4
+},
+"instant": {
+"human": 2,
+"money": -5,
+"research": 0
+}
+}
+
