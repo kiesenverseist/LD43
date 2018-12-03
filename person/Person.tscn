@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://person/Person.gd" type="Script" id=1]
 [ext_resource path="res://person/scientist/checklist looking/look frame 1.png" type="Texture" id=2]
@@ -7,11 +7,13 @@
 [ext_resource path="res://person/scientist/checklist looking/look frame 4.png" type="Texture" id=5]
 [ext_resource path="res://person/scientist/walking/walk frame 1.png" type="Texture" id=6]
 [ext_resource path="res://person/scientist/walking/walk frame 2.png" type="Texture" id=7]
+[ext_resource path="res://person/scientist/falling/sci fall 1.png" type="Texture" id=8]
+[ext_resource path="res://person/scientist/falling/sci fall 2.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 2.87917, 8.23216 )
+extents = Vector2( 3, 8 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -24,6 +26,11 @@ animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "walking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "falling",
 "speed": 5.0
 } ]
 

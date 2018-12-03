@@ -7,6 +7,8 @@ var alive = true
 var grav = 2.5
 var extents = 20
 
+var time_on_floor = 0
+
 func _ready():
 	pass
 
@@ -26,15 +28,21 @@ func _process(delta):
 		if position.x < -extents:
 			dir = 1
 	
-	match dir:
-		-1:
-			$body.animation = "walking"
-			$body.flip_h = false
-		0:
-			$body.animation = "idle"
-		1:
-			$body.animation = "walking"
-			$body.flip_h = true
+	if is_on_floor():
+		match dir:
+			-1:
+				$body.animation = "walking"
+				$body.flip_h = false
+			0:
+				$body.animation = "idle"
+			1:
+				$body.animation = "walking"
+				$body.flip_h = true
+	
+	if abs(vel.y) > grav * 10: #this line doesn't make sense
+		#but it works
+		#so don't touch
+		$body.animation = "falling"
 	
 
 func _physics_process(delta):	

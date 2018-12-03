@@ -10,12 +10,12 @@ enum {
 }
 
 var data = {
-	value = int(rand_range(16,128)),
+	card = null,
 	type = GOOD
 } setget update_data
 
 func _ready():
-	
+	data.card = $"/root/Main/CardManager".get_card()
 	update_data()
 
 # to pick up
@@ -33,7 +33,7 @@ func get_drag_data(pos):
 
 func update_data(new = data):
 	data = new
-	$Label.text = str(data.value)
+	$Label.text = str(data.card.name)
 
 #lock after placement, so it cannot be picked up
 func lock(val : bool):

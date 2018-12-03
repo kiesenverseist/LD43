@@ -57,7 +57,7 @@ func drop_data(pos, data):
 	if type == BAD:
 		e.locked = true
 	
-	self.sum += data.value
+#	self.sum += data.value
 
 func generate_card(tier = randi()%3):
 	var e = Element.instance()

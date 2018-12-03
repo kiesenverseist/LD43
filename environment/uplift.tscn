@@ -1,11 +1,45 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://environment/uplift.gd" type="Script" id=1]
+[ext_resource path="res://environment/uplift/arrow/1.png" type="Texture" id=2]
+[ext_resource path="res://environment/uplift/arrow/2.png" type="Texture" id=3]
+[ext_resource path="res://environment/uplift/arrow/3.png" type="Texture" id=4]
+[ext_resource path="res://environment/uplift/arrow/4.png" type="Texture" id=5]
+[ext_resource path="res://environment/uplift/arrow/5.png" type="Texture" id=6]
+[ext_resource path="res://environment/uplift/arrow/6.png" type="Texture" id=7]
+[ext_resource path="res://environment/uplift/arrow/7.png" type="Texture" id=8]
+[ext_resource path="res://environment/uplift/arrow/8.png" type="Texture" id=9]
+[ext_resource path="res://environment/uplift/arrow/9.png" type="Texture" id=10]
+[ext_resource path="res://environment/uplift/arrow/10.png" type="Texture" id=11]
+[ext_resource path="res://environment/uplift/arrow/11.png" type="Texture" id=12]
+[ext_resource path="res://environment/uplift/arrow/12.png" type="Texture" id=13]
+[ext_resource path="res://environment/uplift/arrow/13.png" type="Texture" id=14]
+[ext_resource path="res://environment/uplift/arrow/14.png" type="Texture" id=15]
+[ext_resource path="res://environment/uplift/arrow/15.png" type="Texture" id=16]
+[ext_resource path="res://environment/uplift/arrow/16.png" type="Texture" id=17]
+[ext_resource path="res://environment/uplift/arrow/17.png" type="Texture" id=18]
+[ext_resource path="res://environment/uplift/arrow/18.png" type="Texture" id=19]
+[ext_resource path="res://environment/uplift/arrow/19.png" type="Texture" id=20]
+[ext_resource path="res://environment/uplift/arrow/20.png" type="Texture" id=21]
+[ext_resource path="res://environment/uplift/arrow/21.png" type="Texture" id=22]
+[ext_resource path="res://environment/uplift/arrow/22.png" type="Texture" id=23]
+[ext_resource path="res://environment/uplift/arrow/23.png" type="Texture" id=24]
+[ext_resource path="res://environment/uplift/arrow/24.png" type="Texture" id=25]
+[ext_resource path="res://environment/uplift/arrow/25.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 5.72627, 67.048 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), null, null, null, null, null, null ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
 
 [node name="uplift" type="Area2D"]
 input_pickable = true
@@ -21,6 +55,12 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 969.445, 333.65 )
 shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "default"
+frame = 18
+playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_uplift_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_uplift_body_exited"]

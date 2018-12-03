@@ -18,4 +18,9 @@ func _ready():
 
 func get_card(id = -1):
 	if id == -1:
-		return cards[randi()%1]
+		return cards[randi()%cards.size()]
+	
+	for card in cards:
+		if card.id == id:
+			return card
+	

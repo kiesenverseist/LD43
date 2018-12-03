@@ -12,3 +12,4 @@ func _on_uplift_body_exited(body):
 
 func _on_Timer_timeout():
 	active = !active
+	$AnimatedSprite.visible = active

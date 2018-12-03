@@ -2,33 +2,26 @@ extends Node
 
 onready var m = $"../"
 
+#get rid of all this
 var human_consumption = {
 	money = -1,
-	research = 1,
-	materials = 0,
-	energy = 0
+	research = 1
 }
 
 var machine_consumption = {
 	money = 5,
-	materials = -3,
-	energy = -3,
 	humans = 0,
 	research = 0
 }
 
 var passive_creation = {
 	money = 5,
-	materials = 5,
-	energy = 5,
 	humans = 0,
 	research = 0
 }
 
 var research_reward = {
-	money = 50,
-	materials = 50,
-	energy = 50,
+	money = 0,
 	humans = 0,
 	research = 0
 }
@@ -73,9 +66,8 @@ var requirements = {
 }
 
 func research_completed():
-	pass
-#	for type in research_reward:
-#		m.resources[type] += research_reward[type]
+	for type in research_reward:
+		m.resources[type] += research_reward[type]
 
 func _on_ResourceTrackerCountdown_timeout():
 	for type in human_consumption:
