@@ -13,33 +13,25 @@ var research_goal = 20
 var record = {
 	humans = [],
 	money = [],
-	research = [],
-	materials = [],
-	energy = []
+	research = []
 }
 
 var resources = {
-	humans = 3,
-	money = 500,
-	research = 0,
-	materials = 500,
-	energy = 500
+	humans = 10.0,
+	money = 500.0,
+	research = 0.0\
 }
 
 var colors = {
-	humans = Color(0.492188, 0.345078, 0.26532),
-	money = Color(0.298995, 0.492188, 0.26532),
-	research = Color(0.398712, 0.50438, 0.785156),
-	materials = Color(0.335861, 0.33695, 0.339844),
-	energy = Color(0.839844, 0.763159, 0.262451)
+	humans = Color(0.890625, 0.184387, 0.184387),
+	money = Color(0.477047, 0.898438, 0.403595),
+	research = Color(0.398712, 0.50438, 0.785156)
 }
 
 var limits = {
-	humans = 10.0,
+	humans = 20.0,
 	money = 1000.0,
 	research = 500.0,
-	materials = 1000.0,
-	energy = 1000.0
 }
 
 var level_config = {
@@ -70,7 +62,7 @@ var level_config = {
 }
 
 func _ready():
-	self.level = 1
+	self.level = 3
 
 func _process(delta):
 	if resources.research > research_goal:
@@ -102,8 +94,6 @@ func levelup(val):
 	
 	resources.humans += 2
 	limits.money += config.limits
-	limits.materials += config.limits
-	limits.energy += config.limits
 	
 	for c in $room.get_children():
 		c.visible = false

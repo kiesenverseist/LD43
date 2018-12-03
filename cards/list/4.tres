@@ -8,7 +8,7 @@ script = ExtResource( 1 )
 name = "Quality Control"
 description = "All recurited scientits are interviewed to ensure only \"suitable\" candidates are working, the rest are \"displaced\""
 id = 3
-tier = null
+tier = 1
 benifits = {
 "description": "remaning scientits seem to now be incredibly viglient with thier work",
 "generation": {

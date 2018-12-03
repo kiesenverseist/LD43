@@ -8,7 +8,7 @@ script = ExtResource( 1 )
 name = "Casual Work"
 description = "Scientits can now work flexible 50 hour weeks "
 id = 2
-tier = null
+tier = 1
 benifits = {
 "description": "some scientits are attracted to this offer and seem to work harder than the others with 15 year contracts",
 "generation": {

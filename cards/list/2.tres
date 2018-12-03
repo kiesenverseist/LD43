@@ -8,7 +8,7 @@ script = ExtResource( 1 )
 name = "Quality Oil"
 description = "Spent cooking oil is replaced with extra virgin olive oil to lubricate the parts"
 id = 1
-tier = null
+tier = 1
 benifits = {
 "description": "new oil seems to lubricate better, and the scientists like the smell... and taste",
 "generation": {

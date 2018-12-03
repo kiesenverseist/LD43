@@ -20,14 +20,14 @@ func _process(d):
 		add_text(str(round(res[type])) + "/" + str(round(lim[type])))
 		
 		if rec[type].size() > 2:
-			var diff = -rec[type][rec[type].size()-1] + rec[type][rec[type].size()-2]
+			var diff = rec[type][0] - rec[type][1]
 			
 			if diff > 0:
 				push_color(Color(0,1,0))
 			elif diff < 0:
 				push_color(Color(1,0,0))
 			
-			add_text(" (%s)" % str(round(diff)))
+			add_text(" (%s)" % str(float(round(diff*10))/10))
 			
 			if diff != 0: pop()
 		

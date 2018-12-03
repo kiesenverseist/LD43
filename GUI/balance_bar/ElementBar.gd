@@ -11,12 +11,16 @@ onready var list = $ScrollContainer/List
 enum TYPE {
 	GOOD,
 	BAD,
-	NUETRAL
+	NUETRAL,
+	SPECIAL
 }
 
 export(TYPE) var type
 
 signal sum_changed(val)
+signal card_changed(list)
+
+var previous_count = 0
 
 func _ready():
 	for i in range(starting_elements):
@@ -45,6 +49,7 @@ func drop_data(pos, data):
 	var e = Element.instance()
 	list.add_child(e)
 	e.data = data
+	e.card = data.card
 	e.data.type = type
 	data.ref.queue_free()
 	
@@ -57,7 +62,36 @@ func drop_data(pos, data):
 	if type == BAD:
 		e.locked = true
 	
-#	self.sum += data.value
+	var c = []
+	
+	for child in list.get_children():
+		c.append(child.card)
+		
+	emit_signal("card_changed", c)
+	
+	#handle instant effects
+	if type == GOOD:
+		get_node("/root/Main").resources.humans += data.card.benifits.instant.human
+		get_node("/root/Main").resources.money += data.card.benifits.instant.money
+		get_node("/root/Main").resources.research += data.card.benifits.instant.research
+	
+	if type == BAD:
+		get_node("/root/Main").resources.humans += data.card.detriments.instant.human
+		get_node("/root/Main").resources.money += data.card.detriments.instant.money
+		get_node("/root/Main").resources.research += data.card.detriments.instant.research
+	
+	
+
+func _process(delta):
+	if previous_count != list.get_child_count():
+		previous_count = list.get_child_count()
+		var c = []
+	
+		for child in list.get_children():
+			c.append(child.card)
+			
+		emit_signal("card_changed", c)
+		
 
 func generate_card(tier = randi()%3):
 	var e = Element.instance()
