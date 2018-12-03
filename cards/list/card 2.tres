@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Quality Oil"
+description = "Extra virgin olive oil is used to lubricate the machine/s instead of spent cooking oil"
+id = 1
+tier = null
+benifits = {
+"description": "the new oil seems to lubricate better, the scientists also like the smell... and taste",
+"generation": {
+"human": 0.1,
+"money": 2.0,
+"research": 2.0
+},
+"instant": {
+"human": 0.0,
+"money": 0.0,
+"research": 0.0
+}
+}
+detriments = {
+"description": "extra virgin is hard to clean up, some scienits couldent stomach the three kiloliters the eco-ethics board orderd the scientists to consume",
+"generation": {
+"human": 0.0,
+"money": 0.0,
+"research": 0.0
+},
+"instant": {
+"human": -2.0,
+"money": 0.0,
+"research": 0.0
+}
+}
+

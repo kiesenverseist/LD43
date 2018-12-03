@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Quality Oil"
+description = "Spent cooking oil is replaced with extra virgin olive oil to lubricate the parts"
+id = 1
+tier = null
+benifits = {
+"description": "new oil seems to lubricate better, and the scientists like the smell... and taste",
+"generation": {
+"human": 0,
+"money": 1,
+"research": 1
+},
+"instant": {
+"human": 1,
+"money": 1,
+"research": 1
+}
+}
+detriments = {
+"description": "",
+"generation": {
+"human": -1,
+"money": -1,
+"research": -1
+},
+"instant": {
+"human": -1,
+"money": -1,
+"research": -1
+}
+}
+

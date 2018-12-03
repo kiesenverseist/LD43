@@ -115,7 +115,7 @@ position = Vector2( -151.088, 43.3669 )
 [node name="AnimatedSprite" parent="room/level2/uplift" index="1"]
 modulate = Color( 1, 1, 1, 0.505882 )
 position = Vector2( -150.523, 31.7772 )
-frame = 29
+frame = 21
 
 [node name="Timer" type="Timer" parent="room/level2/uplift"]
 process_mode = 1
@@ -156,19 +156,28 @@ position = Vector2( -0.192871, 16.6294 )
 editor/display_folded = true
 position = Vector2( -26.345, 10.1525 )
 
+[node name="stable" parent="Machine/level1" index="0"]
+frame = 0
+
+[node name="unstable" parent="Machine/level1" index="1"]
+frame = 0
+
 [node name="level2" parent="Machine" index="3"]
 editor/display_folded = true
 position = Vector2( 23.2934, 10.6665 )
 
+[node name="stable" parent="Machine/level2" index="0"]
+frame = 1
+
 [node name="unstable" parent="Machine/level2" index="1"]
-frame = 8
+frame = 9
 
 [node name="level3" parent="Machine" index="4"]
 editor/display_folded = true
 position = Vector2( 112.846, -96.1734 )
 
-[node name="unstable" parent="Machine/level3" index="1"]
-frame = 7
+[node name="stable" parent="Machine/level3" index="0"]
+frame = 1
 
 [node name="people" type="Node" parent="."]
 editor/display_folded = true
@@ -201,8 +210,8 @@ editor/display_folded = true
 [node name="Components" parent="GUI/TabContainer" index="3"]
 editor/display_folded = true
 
-[connection signal="timeout" from="ResourceTrackerCountdown" to="resource_manager" method="_on_ResourceTrackerCountdown_timeout"]
 [connection signal="timeout" from="ResourceTrackerCountdown" to="." method="_on_ResourceTrackerCountdown_timeout"]
+[connection signal="timeout" from="ResourceTrackerCountdown" to="resource_manager" method="_on_ResourceTrackerCountdown_timeout"]
 [connection signal="timeout" from="room/level2/uplift/Timer" to="room/level2/uplift" method="_on_Timer_timeout"]
 [connection signal="changed" from="GUI/StabilityBar" to="." method="_on_StabilityBar_changed"]
 

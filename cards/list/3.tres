@@ -5,9 +5,9 @@
 [resource]
 
 script = ExtResource( 1 )
-name = "somehow the second"
+name = "the first card :D"
 description = "cool card"
-id = 1
+id = null
 tier = null
 benifits = {
 "description": "",

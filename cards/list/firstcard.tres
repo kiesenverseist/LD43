@@ -5,16 +5,16 @@
 [resource]
 
 script = ExtResource( 1 )
-name = "the first card :D"
-description = "cool card"
+name = "Polished Cogs"
+description = "Ye old cogs replaced with brand spanking new shiny ones, they seem to move quicker."
 id = null
-tier = null
+tier = 1
 benifits = {
-"description": "",
+"description": "efficient cogs are used that speed up production",
 "generation": {
-"human": 1,
-"money": 1,
-"research": 1
+"human": 0,
+"money": 5,
+"research": 0
 },
 "instant": {
 "human": 1,
@@ -23,11 +23,11 @@ benifits = {
 }
 }
 detriments = {
-"description": "",
+"description": "shiny cogs get hotter than regular ones, the scientists hate working in heat",
 "generation": {
-"human": -1,
-"money": -1,
-"research": -1
+"human": 0,
+"money": 0,
+"research": -2
 },
 "instant": {
 "human": -1,
