@@ -5,34 +5,34 @@
 [resource]
 
 script = ExtResource( 1 )
-name = "Quality Oil"
-description = "Spent cooking oil is replaced with extra virgin olive oil to lubricate the parts"
-id = 1
+name = "Anodised Fins"
+description = "Paper-glue composite fins (cardboard) are replaced with shiny stronger ones, fans can now spin quicker before decintergrating"
+id = 4
 tier = 1
 benifits = {
-"description": "new oil seems to lubricate better, and the scientists like the smell... and taste",
+"description": "more spinny in the fans means more air moving, which both the machine and scientits like",
 "generation": {
 "human": 0,
-"money": 1,
-"research": 1
+"money": 4,
+"research": 2
 },
 "instant": {
-"human": 1,
-"money": 1,
-"research": 1
+"human": 0,
+"money": 0,
+"research": 0
 }
 }
 detriments = {
-"description": "",
+"description": "when the fins do eventully fly off, they seem to do a bit more damage than papercuts",
 "generation": {
-"human": -1,
-"money": -1,
-"research": -1
+"human": 0,
+"money": 0,
+"research": 0
 },
 "instant": {
-"human": -1,
-"money": -1,
-"research": -1
+"human": -2,
+"money": 0,
+"research": 0
 }
 }
 

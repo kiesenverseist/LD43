@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Contractors"
+description = "10 scientits are temporaly hired from the internet, not all are exactly qualified"
+id = 14
+tier = 2
+benifits = {
+"description": "10 more employees",
+"generation": {
+"human": 0,
+"money": 0,
+"research": -2
+},
+"instant": {
+"human": 10,
+"money": 0,
+"research": 0
+}
+}
+detriments = {
+"description": "some contracted scientits seem to have not finished thier contracts, and despite thier absence payments still need to be made",
+"generation": {
+"human": 0,
+"money": -6,
+"research": 0
+},
+"instant": {
+"human": -10,
+"money": 0,
+"research": 0
+}
+}
+

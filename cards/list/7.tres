@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Coffee"
+description = "mmMMMmmm cofffeee"
+id = 7
+tier = 2
+benifits = {
+"description": "consumed in near life threataing amounts can reduce longevity of life, but in the meanwhile slow down time to such a degree that not even procastination will hinder progress",
+"generation": {
+"human": 0,
+"money": 0,
+"research": 20
+},
+"instant": {
+"human": -2,
+"money": -20,
+"research": 30
+}
+}
+detriments = {
+"description": "no coffee, no money",
+"generation": {
+"human": 0,
+"money": 0,
+"research": -5
+},
+"instant": {
+"human": 0,
+"money": 0,
+"research": -20
+}
+}
+

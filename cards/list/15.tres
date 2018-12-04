@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "The Grand Scheme"
+description = "Scientits are employed then fired before thier paycheck"
+id = 15
+tier = 3
+benifits = {
+"description": "another justification for numbering the scientits instead of naming them",
+"generation": {
+"human": 7,
+"money": 20,
+"research": 0
+},
+"instant": {
+"human": -7,
+"money": 30,
+"research": 0
+}
+}
+detriments = {
+"description": "there is no substitute to the money The Grand Scheme can generate",
+"generation": {
+"human": 0,
+"money": -25,
+"research": 0
+},
+"instant": {
+"human": 0,
+"money": 0,
+"research": 0
+}
+}
+

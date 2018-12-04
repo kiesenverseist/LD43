@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Eco-Ethics Benifits"
+description = "Adhearing to pollution laws allows this fine establishment to be applicable to benifits administerd by the eco-ethics board"
+id = 12
+tier = 2
+benifits = {
+"description": "money, and better conditons for scientits",
+"generation": {
+"human": 1,
+"money": 13,
+"research": 7
+},
+"instant": {
+"human": 0,
+"money": 0,
+"research": 0
+}
+}
+detriments = {
+"description": "reverting to old dirty ways does not impress a few scientits who have gotten a taste of the good life",
+"generation": {
+"human": 0,
+"money": 0,
+"research": 0
+},
+"instant": {
+"human": -3,
+"money": -20,
+"research": 0
+}
+}
+
