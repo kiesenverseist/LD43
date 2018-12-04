@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Liquid Nitrogen"
+description = "Extreem measures are taken to cool down the machine, increasing the effeciency of the machine significantly"
+id = 9
+tier = 2
+benifits = {
+"description": "cooler machine, faster machine",
+"generation": {
+"human": 0,
+"money": 15,
+"research": 0
+},
+"instant": {
+"human": 0,
+"money": 30,
+"research": 0
+}
+}
+detriments = {
+"description": "remaning parts are extreemly brittle, alot of expensive matienice is needed",
+"generation": {
+"human": 0,
+"money": -5,
+"research": 0
+},
+"instant": {
+"human": 0,
+"money": -5,
+"research": 0
+}
+}
+

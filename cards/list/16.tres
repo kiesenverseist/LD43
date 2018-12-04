@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Deal With the Devil"
+description = "Dammend souls are reincarnated as great scientits, however the devil does love a good shopping spree"
+id = 16
+tier = 3
+benifits = {
+"description": "very efficent and numerous scientits",
+"generation": {
+"human": 5,
+"money": -15,
+"research": 50
+},
+"instant": {
+"human": 0,
+"money": 0,
+"research": 0
+}
+}
+detriments = {
+"description": "there is no substitute to the money The Grand Scheme can generate",
+"generation": {
+"human": 0,
+"money": -25,
+"research": 0
+},
+"instant": {
+"human": 0,
+"money": 0,
+"research": 0
+}
+}
+

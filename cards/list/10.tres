@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Office Politics"
+description = "Seleceted scientits are given job titiles instead of numbers"
+id = 10
+tier = 2
+benifits = {
+"description": "scientits become competitive, some even join in hopes of gaining these fancy titiles",
+"generation": {
+"human": 1,
+"money": -5,
+"research": 10
+},
+"instant": {
+"human": 0,
+"money": -10,
+"research": 20
+}
+}
+detriments = {
+"description": "removing titles makes some scienits angry and others happy",
+"generation": {
+"human": 0,
+"money": 0,
+"research": -5
+},
+"instant": {
+"human": -2,
+"money": 0,
+"research": -45
+}
+}
+

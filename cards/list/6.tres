@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Bonus Pay"
+description = "Some incentive goes a long way towards harder working scientits "
+id = 6
+tier = 2
+benifits = {
+"description": "scientis relish in the extra money by buying unhealthy amounts of coffee, they do seem to work faster",
+"generation": {
+"human": 0,
+"money": -5,
+"research": 15
+},
+"instant": {
+"human": 2,
+"money": -10,
+"research": 0
+}
+}
+detriments = {
+"description": "no money, no coffee",
+"generation": {
+"human": 0,
+"money": 0,
+"research": 0
+},
+"instant": {
+"human": -2,
+"money": 0,
+"research": 0
+}
+}
+

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Black Market"
+description = "Products are established through reliable links in the black market generating insane profits, however complications with some scienits arise"
+id = 17
+tier = 3
+benifits = {
+"description": "money money moneeyy",
+"generation": {
+"human": 0,
+"money": 40,
+"research": 0
+},
+"instant": {
+"human": -3,
+"money": 0,
+"research": 0
+}
+}
+detriments = {
+"description": "one cannot simply withdraw from the black market, there will be consequences ",
+"generation": {
+"human": -3,
+"money": -10,
+"research": -20
+},
+"instant": {
+"human": -8,
+"money": -100,
+"research": 0
+}
+}
+

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Fine Print"
+description = "An employee satisfaction quiz is taken by all employees, ofcourse the encrypted morsecode microdots printed on the edge of the papers is not noticed by the scientits, and so a scientits signiture can go a long way towards \"relocating\" life savings"
+id = 8
+tier = 2
+benifits = {
+"description": "lots and lots of money",
+"generation": {
+"human": 0,
+"money": 0,
+"research": 0
+},
+"instant": {
+"human": 0,
+"money": 340,
+"research": 0
+}
+}
+detriments = {
+"description": "Scientists get suspicous after they see massive withdrawals, after talking to collegues they catch on to what happened and start leaving in protest to this abomination of a scheme",
+"generation": {
+"human": 0,
+"money": 0,
+"research": -5
+},
+"instant": {
+"human": -5,
+"money": 0,
+"research": -10
+}
+}
+

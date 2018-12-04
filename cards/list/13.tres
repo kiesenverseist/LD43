@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "A Holy Presence"
+description = "A company taloired religon is admisterd, scientits now feel a 'holy presence' watching over them as they work"
+id = 12
+tier = 2
+benifits = {
+"description": "work has become less work and more \"service to the devine\"",
+"generation": {
+"human": 2,
+"money": 0,
+"research": 20
+},
+"instant": {
+"human": 0,
+"money": 0,
+"research": 0
+}
+}
+detriments = {
+"description": "remaning scientits feel a sense of emptyness, they go on a journey to search for thier soul",
+"generation": {
+"human": 0,
+"money": 0,
+"research": 0
+},
+"instant": {
+"human": -9,
+"money": 0,
+"research": 0
+}
+}
+

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://cards/base_card.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+name = "Aftermarket Parts"
+description = "Cheaper aftermarket parts are used to maintain the machine/s"
+id = 11
+tier = 2
+benifits = {
+"description": "over time profits increase siginficantly despite the odd flying part or two",
+"generation": {
+"human": 0,
+"money": 15,
+"research": 0
+},
+"instant": {
+"human": -2,
+"money": 20,
+"research": 0
+}
+}
+detriments = {
+"description": "",
+"generation": {
+"human": 0,
+"money": 0,
+"research": 0
+},
+"instant": {
+"human": 0,
+"money": 0,
+"research": 0
+}
+}
+
