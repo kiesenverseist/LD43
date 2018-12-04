@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://resource_manager.gd" type="Script" id=2]
@@ -8,8 +8,7 @@
 [ext_resource path="res://environment/uplift.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Machine/Machine.tscn" type="PackedScene" id=7]
 [ext_resource path="res://environment/people_manager.gd" type="Script" id=8]
-[ext_resource path="res://person/Person.tscn" type="PackedScene" id=9]
-[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -115,7 +114,7 @@ position = Vector2( -151.088, 43.3669 )
 [node name="AnimatedSprite" parent="room/level2/uplift" index="1"]
 modulate = Color( 1, 1, 1, 0.505882 )
 position = Vector2( -150.523, 31.7772 )
-frame = 26
+frame = 8
 
 [node name="Timer" type="Timer" parent="room/level2/uplift"]
 process_mode = 1
@@ -157,42 +156,35 @@ editor/display_folded = true
 position = Vector2( -26.345, 10.1525 )
 
 [node name="stable" parent="Machine/level1" index="0"]
-frame = 2
+frame = 3
 
 [node name="unstable" parent="Machine/level1" index="1"]
-frame = 2
+frame = 3
 
 [node name="level2" parent="Machine" index="3"]
 editor/display_folded = true
 position = Vector2( 23.2934, 10.6665 )
 
-[node name="unstable" parent="Machine/level2" index="1"]
+[node name="stable" parent="Machine/level2" index="0"]
 frame = 0
+
+[node name="unstable" parent="Machine/level2" index="1"]
+frame = 4
 
 [node name="level3" parent="Machine" index="4"]
 editor/display_folded = true
 position = Vector2( 112.846, -96.1734 )
 
 [node name="stable" parent="Machine/level3" index="0"]
-frame = 1
-
-[node name="unstable" parent="Machine/level3" index="1"]
 frame = 0
 
+[node name="unstable" parent="Machine/level3" index="1"]
+frame = 5
+
 [node name="people" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 8 )
 
-[node name="Person" parent="people" instance=ExtResource( 9 )]
-position = Vector2( 17.8944, -22.0531 )
-
-[node name="Person2" parent="people" instance=ExtResource( 9 )]
-position = Vector2( -29.8051, -2.75958 )
-
-[node name="Person3" parent="people" instance=ExtResource( 9 )]
-position = Vector2( -38.5726, 16.5455 )
-
-[node name="GUI" parent="." instance=ExtResource( 10 )]
+[node name="GUI" parent="." instance=ExtResource( 9 )]
 
 [node name="ElementBar" parent="GUI/TabContainer/Balance" index="0"]
 starting_elements = 0
@@ -203,6 +195,7 @@ editor/display_folded = true
 [connection signal="timeout" from="ResourceTrackerCountdown" to="resource_manager" method="_on_ResourceTrackerCountdown_timeout"]
 [connection signal="timeout" from="ResourceTrackerCountdown" to="." method="_on_ResourceTrackerCountdown_timeout"]
 [connection signal="timeout" from="room/level2/uplift/Timer" to="room/level2/uplift" method="_on_Timer_timeout"]
+[connection signal="card_changed" from="GUI/TabContainer/Balance/SpecialBar" to="resource_manager" method="_on_SpecialBar_card_changed"]
 [connection signal="card_changed" from="GUI/TabContainer/Balance/SpecialBar" to="." method="_on_SpecialBar_card_changed"]
 [connection signal="card_changed" from="GUI/TabContainer/Balance/GoodBar" to="resource_manager" method="_on_GoodBar_card_changed"]
 [connection signal="card_changed" from="GUI/TabContainer/Balance/BadBar" to="resource_manager" method="_on_BadBar_card_changed"]

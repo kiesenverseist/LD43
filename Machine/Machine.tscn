@@ -117,14 +117,14 @@ margin_bottom = -45.0
 [node name="stable" type="AnimatedSprite" parent="level1"]
 frames = SubResource( 2 )
 animation = "default"
-frame = 1
+frame = 2
 playing = true
 
 [node name="unstable" type="AnimatedSprite" parent="level1"]
 visible = false
 frames = SubResource( 3 )
 animation = "default"
-frame = 1
+frame = 2
 playing = true
 
 [node name="level2" type="Node2D" parent="."]
@@ -133,13 +133,14 @@ position = Vector2( 40, 0 )
 [node name="stable" type="AnimatedSprite" parent="level2"]
 frames = SubResource( 4 )
 animation = "default"
+frame = 1
 playing = true
 
 [node name="unstable" type="AnimatedSprite" parent="level2"]
 visible = false
 frames = SubResource( 5 )
 animation = "default"
-frame = 6
+frame = 3
 playing = true
 
 [node name="level3" type="Node2D" parent="."]
@@ -148,13 +149,14 @@ position = Vector2( -45, -16 )
 [node name="stable" type="AnimatedSprite" parent="level3"]
 frames = SubResource( 6 )
 animation = "default"
+frame = 1
 playing = true
 
 [node name="unstable" type="AnimatedSprite" parent="level3"]
 visible = false
 frames = SubResource( 7 )
 animation = "default"
-frame = 6
+frame = 3
 playing = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_Machine_mouse_entered"]

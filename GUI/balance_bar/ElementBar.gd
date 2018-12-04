@@ -83,6 +83,12 @@ func drop_data(pos, data):
 	
 
 func _process(delta):
+	
+	if previous_count >= 6 and type == GOOD:
+		$Label.visible = true
+	else:
+		$Label.visible = false
+	
 	if previous_count != list.get_child_count():
 		previous_count = list.get_child_count()
 		var c = []

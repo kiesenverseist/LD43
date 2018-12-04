@@ -5,9 +5,7 @@ var dir = 1
 var vel = Vector2()
 var alive = true
 var grav = 2.5
-var extents = 20
-
-var time_on_floor = 0
+var extents = 70
 
 func _ready():
 	pass
@@ -55,3 +53,4 @@ func _physics_process(delta):
 
 func kill():
 	alive = false
+	$Label.text = "I quit!"

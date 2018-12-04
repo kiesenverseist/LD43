@@ -8,16 +8,16 @@ var human_consumption = {
 	research = 1
 }
 
-var passive_creation = {
-	money = 5.0,
-	humans = 0.1,
-	research = 1.0
-}
-
 var research_reward = {
 	money = 0,
 	humans = 0,
 	research = 0
+}
+
+var total_machine = {
+	money = 0.0,
+	humans = 0.0,
+	research = 0.0
 }
 
 var total_benifit = {
@@ -44,17 +44,12 @@ func _on_ResourceTrackerCountdown_timeout():
 			m.resources.money += 100
 			continue
 		m.resources[type] += human_consumption[type] * m.resources.humans
-	
-	for type in passive_creation:
-		m.resources[type] += passive_creation[type]
 
-	
-	for type in passive_creation:
-		m.resources[type] += total_benifit[type] + total_detriment[type]
+	for type in total_benifit:
+		m.resources[type] += total_benifit[type] + total_detriment[type] + total_machine[type]
 		
 	if m.resources.money > 100 * m.level:
 		m.uplevel()
-		m.resources.money -= 100 * m.level
 
 	
 #for type in requirements:
@@ -76,9 +71,6 @@ func _on_GoodBar_card_changed(list):
 	total_benifit.money = temp.money
 	total_benifit.humans = temp.human
 	total_benifit.research = temp.research
-	
-	print(total_benifit)
-
 
 func _on_BadBar_card_changed(list):
 	var temp = {
@@ -94,3 +86,18 @@ func _on_BadBar_card_changed(list):
 	total_detriment.money = temp.money
 	total_detriment.humans = temp.human
 	total_detriment.research = temp.research
+
+func _on_SpecialBar_card_changed(list):
+	var temp = {
+		money = 5.0,
+		human = 0.0,
+		research = 0.0
+	}
+	
+	for i in list:
+		for type in i.benifits.generation:
+			temp[type] += i.benifits.generation[type]
+	
+	total_machine.money = temp.money
+	total_machine.humans = temp.human
+	total_machine.research = temp.research

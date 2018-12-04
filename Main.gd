@@ -17,7 +17,7 @@ var record = {
 }
 
 var resources = {
-	humans = 10.0,
+	humans = 2.0,
 	money = 500.0,
 	research = 0.0\
 }
@@ -89,7 +89,7 @@ func _process(delta):
 
 func research_complete():
 	resources.research = 0
-	research_goal = randi()%(50*level^2) + 20 * level
+	research_goal = randi()%(50*level^2) + 20 * level + 30
 	$GUI/TabContainer/Balance/ElementBar.generate_card()
 	$resource_manager.research_completed()
 
@@ -104,7 +104,7 @@ func levelup(val):
 	
 	$people.extents = config.extents
 	
-	resources.humans += 2
+#	resources.humans += 2
 	limits.money += config.limits
 	
 	for c in $room.get_children():

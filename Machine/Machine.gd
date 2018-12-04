@@ -6,6 +6,10 @@ var stable = true setget set_stable
 func _ready():
 	$ConsumptioPopup.popup()
 
+func _process(delta):	
+	if randf() < .01:
+		self.stable = !stable
+
 func set_level(val : int):
 	level = val
 	
